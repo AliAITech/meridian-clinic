@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+  MERIDIAN CLINIC — BOOK PAGE — 2026-11-03 — DRAFT, NOT PUBLISHED
+  Built to Meridian Clinic Brand Book v1.1-corrected (same palette/type
+  as index.html). How booking works in this static draft:
+  the form does NOT store anything and has no server. On submit it
+  composes an email to info@meridiangroup.health whose subject STARTS
+  WITH "Book" (Ali's rule, 2026-11-03, so colleagues spot booking mail
+  in the shared info@ inbox) and opens it in the visitor's email app.
+  Subject format: Book – <Service> – <Full name>
+  When the site is published, this can be upgraded to automatic
+  delivery (a form service pointed at info@) with the same subject.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book an Appointment — Meridian Clinic</title>
+<meta name="description" content="Book an appointment at Meridian Clinic, Richmond Hill and online across Ontario. Your request is emailed to our team with the subject starting 'Book'.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep-teal:#0D4C52; --sage:#83AFA1; --soft-white:#F7FAF9; --ink:#183C42;
+    --moss:#546A5F; --mist:#E8EFEB; --card:#ffffff; --radius:16px;
+    --font:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-head:"Inter Display","Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font);font-size:16px;line-height:1.6;color:var(--ink);background:var(--soft-white)}
+  h1,h2{font-family:var(--font-head);color:var(--deep-teal);margin:0}
+  h1{font-size:34px;line-height:40px;font-weight:700}
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+  header{background:var(--soft-white);border-bottom:1px solid var(--mist)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0;max-width:1100px;margin:0 auto;padding-left:20px;padding-right:20px}
+  .logo{width:240px;max-width:60vw;height:auto;display:block}
+  .back{color:var(--deep-teal);font-weight:600;text-decoration:none}
+  main{padding:44px 0 8px}
+  .intro{color:var(--moss);max-width:620px}
+  form{background:var(--card);border:1px solid var(--mist);border-top:4px solid var(--sage);border-radius:var(--radius);padding:26px;margin-top:24px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{display:block;font-weight:600;color:var(--deep-teal);font-size:.92rem;margin:14px 0 6px}
+  label .req{color:#B3261E}
+  input,select,textarea{width:100%;padding:11px 12px;border:1px solid #CBD8D2;border-radius:10px;font:inherit;color:var(--ink);background:#fff}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--sage);border-color:var(--deep-teal)}
+  textarea{min-height:96px;resize:vertical}
+  .btn{display:inline-block;background:var(--deep-teal);color:#fff;padding:13px 24px;border:0;border-radius:999px;font:inherit;font-weight:600;cursor:pointer;margin-top:22px}
+  .btn:hover{background:var(--ink)}
+  .note{color:var(--moss);font-size:.9rem;margin-top:14px}
+  .done{display:none;background:var(--mist);border-radius:var(--radius);padding:18px 20px;margin-top:20px}
+  .done strong{color:var(--deep-teal)}
+  .err{display:none;background:#FDECEA;border:1px solid #F5C6C0;color:#7A1F18;border-radius:var(--radius);padding:12px 16px;margin-top:16px}
+  footer{background:var(--deep-teal);color:#fff;padding:28px 0;margin-top:48px}
+  footer .name{font-family:var(--font-head);font-weight:700;letter-spacing:.1em}
+  footer small{opacity:.85}
+  @media(max-width:640px){ .row{grid-template-columns:1fr} h1{font-size:28px;line-height:34px} }
+</style>
+</head>
+<body>
+<header><div class="bar">
+  <a href="index.html"><img class="logo" src="assets/logo-meridian-primary.png" alt="Meridian Clinic — Integrated Health &amp; Rehabilitation" width="240"></a>
+  <a class="back" href="index.html">← Back to home</a>
+</div></header>
+
+<main class="wrap">
+  <h1>Book an appointment</h1>
+  <p class="intro">Tell us what you need and when suits you. When you press the button, your email app will open with your booking ready to send to our team at <strong>info@meridiangroup.health</strong> — its subject starts with <strong>Book</strong>, so we can find it right away. We reply to confirm your appointment.</p>
+
+  <form id="bookForm" novalidate>
+    <div class="row">
+      <div><label for="fName">Full name <span class="req">*</span></label>
+        <input id="fName" name="name" type="text" autocomplete="name" required></div>
+      <div><label for="fPhone">Phone <span class="req">*</span></label>
+        <input id="fPhone" name="phone" type="tel" autocomplete="tel" required></div>
+    </div>
+    <div class="row">
+      <div><label for="fEmail">Email</label>
+        <input id="fEmail" name="email" type="email" autocomplete="email"></div>
+      <div><label for="fService">Service <span class="req">*</span></label>
+        <select id="fService" name="service" required>
+          <option value="">Please choose…</option>
+          <option>Individual Therapy</option>
+          <option>Couples Therapy</option>
+          <option>Child &amp; Adolescent Therapy</option>
+          <option>Family Therapy</option>
+          <option>Motor Vehicle Accident (MVA) Support</option>
+          <option>Psychological Assessment</option>
+          <option>Online Therapy</option>
+          <option>Practicum Placement &amp; Supervision</option>
+          <option>Not sure yet</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div><label for="fDate">Preferred date</label>
+        <input id="fDate" name="date" type="date"></div>
+      <div><label for="fTime">Preferred time</label>
+        <select id="fTime" name="time">
+          <option value="">No preference</option>
+          <option>Morning</option><option>Afternoon</option><option>Evening</option>
+        </select></div>
+    </div>
+    <div class="row">
+      <div><label for="fType">Session type</label>
+        <select id="fType" name="type">
+          <option>In-person</option><option>Online</option><option>Either</option>
+        </select></div>
+      <div><label for="fLang">Language</label>
+        <select id="fLang" name="language">
+          <option>English</option><option>فارسی (Persian)</option><option>Either</option>
+        </select></div>
+    </div>
+    <label for="fNotes">Anything we should know?</label>
+    <textarea id="fNotes" name="notes" placeholder="A few words are enough — please do not include sensitive health details here."></textarea>
+
+    <button class="btn" type="submit">Send booking request</button>
+    <p class="note">Your request goes to <strong>info@meridiangroup.health</strong> with the subject starting <strong>“Book – …”</strong>. Prefer to talk? Call us at <a href="tel:+19056506800">905-650-6800</a>.</p>
+    <div class="err" id="errBox">Please fill in your name, phone, and the service you need.</div>
+    <div class="done" id="doneBox">
+      <strong>Almost done — please press Send in your email app.</strong><br>
+      Your booking email is addressed to info@meridiangroup.health and its subject is
+      <strong id="doneSubject"></strong>. If your email app did not open,
+      <a id="doneLink" href="#">tap here to open it</a>, or email us directly at
+      <a href="mailto:info@meridiangroup.health">info@meridiangroup.health</a> with “Book” in the subject.
+    </div>
+  </form>
+</main>
+
+<footer><div class="wrap">
+  <div class="name">MERIDIAN CLINIC</div>
+  <small>© Meridian Integrated Health &amp; Rehabilitation Inc. · meridiangroup.health · 905-650-6800</small>
+</div></footer>
+
+<script>
+document.getElementById('bookForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var v = function (id) { return document.getElementById(id).value.trim(); };
+  var name = v('fName'), phone = v('fPhone'), service = v('fService');
+  var err = document.getElementById('errBox');
+  if (!name || !phone || !service) { err.style.display = 'block'; return; }
+  err.style.display = 'none';
+  var subject = 'Book – ' + service + ' – ' + name;
+  var lines = [
+    'New booking request from the Meridian Clinic website',
+    '',
+    'Name: ' + name,
+    'Phone: ' + phone,
+    'Email: ' + (v('fEmail') || '—'),
+    'Service: ' + service,
+    'Preferred date: ' + (v('fDate') || '—'),
+    'Preferred time: ' + (v('fTime') || 'No preference'),
+    'Session type: ' + v('fType'),
+    'Language: ' + v('fLang'),
+    'Notes: ' + (v('fNotes') || '—')
+  ];
+  var mailto = 'mailto:info@meridiangroup.health'
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(lines.join('\n'));
+  document.getElementById('doneSubject').textContent = '“' + subject + '”';
+  document.getElementById('doneLink').href = mailto;
+  document.getElementById('doneBox').style.display = 'block';
+  window.location.href = mailto;
+});
+</script>
+</body>
+</html>

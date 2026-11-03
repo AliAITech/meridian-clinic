@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--
+  MERIDIAN CLINIC — WEBSITE BUILD v1 — 2026-11-03 — DRAFT, NOT PUBLISHED
+  Built to Meridian Clinic Brand Book v1.1-corrected (30 Oct 2026 book,
+  p.22 corrected 3 Nov 2026 at Ali's instruction — the governing brand
+  reference; v1.0 is superseded as reference):
+  colours, Inter type scale, web pattern p.18, logo rules (unchanged,
+  on Soft White, min 220px digital), voice calm/human/plain.
+  Name (book p.22 as corrected): the registered legal name is
+  MERIDIAN INTEGRATED HEALTH & REHABILITATION INC., registered in
+  Ontario; "Meridian Clinic" is only its short public form. The full
+  legal name is used in this site's legal lines (About + footer).
+  The same-name businesses in King City, ON and Richmond, BC are
+  recorded in the book as "Not this clinic".
+  BEFORE LAUNCH (brand book governance pp.19-20):
+  - clinical-lead review of every service description / clinical claim
+  - the proposed tagline in the book is NOT used here — it still
+    needs Ali/Shima approval
+  - no identifiable patient photos without consent: the photos on this
+    page are AI-generated (3 Nov 2026), show no real or identifiable
+    person (backs / hands only, or no people), and sit in assets/
+  Phone: Meridian's own number, as in the contact section below.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Clinic — Integrated Health &amp; Rehabilitation</title>
+<meta name="description" content="Meridian Clinic (Meridian Integrated Health & Rehabilitation Inc.): psychotherapy and psychology care in Richmond Hill and online across Ontario, in English and Persian.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  /* Brand Book v1.1 palette — official, supersedes all earlier concepts */
+  :root{
+    --deep-teal:#0D4C52;  /* primary */
+    --sage:#83AFA1;       /* secondary — large shapes/accents only, never small text */
+    --soft-white:#F7FAF9; /* background */
+    --ink:#183C42;        /* text */
+    --moss:#546A5F;       /* support */
+    --mist:#E8EFEB;       /* support surface */
+    --card:#ffffff;
+    --radius:16px;
+    --font:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-head:"Inter Display","Inter", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);font-size:16px;line-height:1.6;color:var(--ink);background:var(--soft-white)}
+  h1,h2,h3{font-family:var(--font-head);color:var(--deep-teal);margin:0}
+  h1{font-size:40px;line-height:46px;font-weight:700;letter-spacing:-.01em}
+  h2{font-size:30px;line-height:36px;font-weight:700;margin-bottom:14px}
+  h3{font-size:18px;line-height:24px;font-weight:600}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;background:var(--soft-white);border-bottom:1px solid var(--mist);z-index:10}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
+  .logo{width:240px;max-width:60vw;height:auto;display:block} /* brand book: min 220px digital */
+  nav a{color:var(--ink);text-decoration:none;margin-left:20px;font-size:.95rem;font-weight:500}
+  nav a:hover{color:var(--deep-teal);text-decoration:underline}
+  .btn{display:inline-block;background:var(--deep-teal);color:#fff;padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:600;transition:background .3s ease, transform .3s ease, box-shadow .3s ease}
+  .btn:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(24,60,66,.18)}
+  .btn.light{background:var(--mist);color:var(--deep-teal)}
+  .hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;padding:64px 0 48px}
+  .hero p{color:var(--moss);font-size:1.08rem;max-width:520px}
+  .hero .note-line{font-style:italic;color:var(--deep-teal);font-size:1.02rem;margin-top:18px}
+  .blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.55;pointer-events:none;z-index:-1}
+  .blob.b1{width:340px;height:340px;background:var(--mist);top:-40px;left:-90px;animation:drift 16s ease-in-out infinite alternate}
+  .blob.b2{width:260px;height:260px;background:#DCEBE4;bottom:-30px;right:22%;animation:drift 20s ease-in-out infinite alternate-reverse}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(28px,18px) scale(1.06)}}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .hero .rise{animation:rise .9s ease both}
+  .hero .rise.d1{animation-delay:.1s}.hero .rise.d2{animation-delay:.25s}.hero .rise.d3{animation-delay:.4s}.hero .rise.d4{animation-delay:.55s}
+  .photo-wrap{overflow:hidden;border-radius:20px;box-shadow:0 12px 32px rgba(24,60,66,.16);animation:rise 1s ease .3s both}
+  .hero .photo{width:100%;height:auto;display:block;animation:kenburns 22s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease, transform .8s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:20px 0 4px}
+  .gallery figure{margin:0}
+  .gallery img{width:100%;height:190px;object-fit:cover;border-radius:var(--radius);display:block}
+  .gallery figcaption{margin-top:8px;font-weight:600;color:var(--deep-teal);font-size:.95rem}
+  .trust{background:var(--mist);border-radius:var(--radius);display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:center;padding:16px 20px;font-weight:500;color:var(--deep-teal)}
+  section{padding:52px 0 8px}
+  section p.lead{color:var(--moss);max-width:680px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}
+  .card{background:var(--card);border:1px solid var(--mist);border-top:4px solid var(--sage);border-radius:var(--radius);padding:20px;transition:transform .35s ease, box-shadow .35s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(24,60,66,.12)}
+  .gallery img{transition:filter .5s ease}
+  .gallery figure:hover img{filter:brightness(1.05)}
+  .card p{margin:8px 0 0;color:var(--moss);font-size:.95rem}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
+  .step{background:var(--card);border:1px solid var(--mist);border-radius:var(--radius);padding:20px}
+  .step .n{font-family:var(--font-head);font-size:28px;font-weight:700;color:var(--sage)} /* large display numeral only */
+  .step p{margin:8px 0 0;color:var(--moss);font-size:.95rem}
+  details{background:var(--card);border:1px solid var(--mist);border-radius:var(--radius);padding:14px 18px;margin-bottom:10px}
+  summary{font-weight:600;color:var(--deep-teal);cursor:pointer}
+  details p{color:var(--moss);margin:8px 0 0}
+  .contact{background:var(--mist);border-radius:var(--radius);padding:28px;margin:20px 0 12px}
+  .contact a{color:var(--deep-teal);font-weight:600}
+  footer{background:var(--deep-teal);color:#fff;padding:32px 0;margin-top:56px}
+  footer .name{font-family:var(--font-head);font-weight:700;letter-spacing:.1em}
+  footer small{opacity:.85}
+  @media(max-width:760px){ nav{display:none} .hero{grid-template-columns:1fr;text-align:center} .hero p{margin:0 auto} h1{font-size:34px;line-height:40px} }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .js .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <img class="logo" src="assets/logo-meridian-primary.png" alt="Meridian Clinic — Integrated Health &amp; Rehabilitation" width="240">
+  <nav>
+    <a href="#about">About us</a><a href="#approach">Our approach</a><a href="#services">Services</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn" href="book.html">Book</a>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <div>
+      <h1 class="rise d1">Care that feels connected.</h1>
+      <p class="rise d2">Psychotherapy and psychology care in Richmond Hill and online across Ontario. A calm space to talk things through, in English or Persian, at a pace that feels right for you.</p>
+      <div class="rise d3"><a class="btn" href="book.html">Book an appointment</a> <a class="btn light" href="#services">Our services</a></div>
+      <p class="note-line rise d4">You don't have to go through it alone.</p>
+    </div>
+    <div class="photo-wrap"><img class="photo" src="assets/hero-room.jpg" alt="A calm therapy room with two armchairs, plants and natural light"></div>
+  </div>
+
+  <div class="trust"><span>Licensed professionals</span><span>In-person &amp; online</span><span>English &amp; فارسی</span><span>MVA / FSRA support</span></div>
+
+  <section id="about"><h2>About us</h2>
+    <p class="lead">Meridian Clinic is the short public form of Meridian Integrated Health &amp; Rehabilitation Inc., a psychology and psychotherapy clinic serving Richmond Hill and, online, communities across Ontario. Our work is grounded in respectful, evidence-informed care — simple, human, and centred around each person who comes to us.</p>
+  </section>
+
+  <section id="approach"><h2>Our approach</h2>
+    <p class="lead">Getting started is kept simple, and each step is explained as we go.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Book</h3><p>Contact us through this site, by phone, or on WhatsApp to arrange a first appointment.</p></div>
+      <div class="step"><div class="n">2</div><h3>Meet your therapist</h3><p>Sessions are held at our office or online, depending on what suits you best.</p></div>
+      <div class="step"><div class="n">3</div><h3>Continue at your pace</h3><p>Together, you and your therapist agree on the focus and pace of your work.</p></div>
+    </div>
+    <p class="lead" style="margin-top:20px">Our therapists work in English and Persian. Couples work at the clinic draws on Emotionally Focused Therapy (EFT). Your privacy is respected throughout, and online sessions are available when coming in person is difficult.</p>
+  </section>
+
+  <section id="services"><h2>Services</h2>
+    <p class="lead">The services below reflect the care offered at the clinic. Details of any service can be discussed with our team before you book.</p>
+    <div class="gallery">
+      <figure><img src="assets/individual-therapy.jpg" alt="A person writing in a notebook during a quiet moment, seen from behind"><figcaption>Individual Therapy</figcaption></figure>
+      <figure><img src="assets/couples-therapy.jpg" alt="A couple walking hand in hand on a green path, seen from behind"><figcaption>Couples Therapy</figcaption></figure>
+      <figure><img src="assets/child-therapy.jpg" alt="A child's hands playing with wooden toys"><figcaption>Child &amp; Adolescent Therapy</figcaption></figure>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Individual Therapy</h3><p>One-to-one sessions for adults, focused on the concerns you bring.</p></div>
+      <div class="card"><h3>Couples Therapy</h3><p>Sessions for partners who want support working through difficulties together, drawing on EFT.</p></div>
+      <div class="card"><h3>Child &amp; Adolescent Therapy</h3><p>Care for children and teenagers, with parents involved as appropriate.</p></div>
+      <div class="card"><h3>Family Therapy</h3><p>Sessions with family members together, to support communication at home.</p></div>
+      <div class="card"><h3>Motor Vehicle Accident (MVA) Support</h3><p>Care following a motor vehicle accident, with support for FSRA and insurance forms and claims.</p></div>
+      <div class="card"><h3>Psychological Assessment</h3><p>Assessment services, arranged and explained in advance by our team.</p></div>
+      <div class="card"><h3>Online Therapy</h3><p>Sessions by Google Meet, Zoom or WhatsApp, wherever you are in Ontario.</p></div>
+      <div class="card"><h3>Practicum Placement &amp; Supervision</h3><p>Supervised practicum placements for students, offered in partnership with Yorkville University.</p></div>
+    </div>
+  </section>
+
+  <section id="faq"><h2>Common questions</h2>
+    <details><summary>What languages do your therapists speak?</summary><p>Therapy is offered in English and Persian, and some of our therapists are bilingual.</p></details>
+    <details><summary>How do I book an appointment?</summary><p>Through the <a href="book.html">booking page</a> on this website, by phone at 905-650-6800, or through our support on WhatsApp. We will confirm a time that works for you.</p></details>
+    <details><summary>How do I choose a therapist?</summary><p>You can read about our therapists, or contact our support team and we will help you find a suitable match.</p></details>
+    <details><summary>Can sessions be held online?</summary><p>Yes. Online sessions are held by Google Meet, Zoom or WhatsApp. In-person sessions are held at our office.</p></details>
+    <details><summary>Can I stay anonymous?</summary><p>Your privacy is respected. Please talk with our team about any concern you have before your first session.</p></details>
+    <details><summary>Do your therapists prescribe medication?</summary><p>No. Our therapists provide psychotherapy and do not prescribe medication.</p></details>
+    <details><summary>What do sessions cost?</summary><p>Please contact us for current fees, and we will explain the options clearly before you book.</p></details>
+  </section>
+
+  <section id="contact"><h2>Contact</h2>
+    <div class="contact">
+      <p><strong>Meridian Clinic</strong><br>
+      225 East Beaver Creek Rd, Richmond Hill, ON L4B 3P4<br>
+      Phone: <a href="tel:+19056506800">905-650-6800</a><br>
+      Email: <a href="mailto:info@meridiangroup.health">info@meridiangroup.health</a><br>
+      Hours: Monday–Saturday, by appointment</p>
+      <a class="btn" href="book.html">Book an appointment</a> <a class="btn light" href="tel:+19056506800">Call 905-650-6800</a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div class="name">MERIDIAN CLINIC</div>
+  <small>© Meridian Integrated Health &amp; Rehabilitation Inc. · meridiangroup.health · 905-650-6800</small>
+</div></footer>
+<script>
+// Gentle reveal-on-scroll (calm motion; disabled for reduced-motion users via CSS)
+(function () {
+  var els = document.querySelectorAll('section, .card, .step, .gallery figure, details, .trust, .contact');
+  if (!('IntersectionObserver' in window)) { return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function (el) { el.classList.add('reveal'); io.observe(el); });
+})();
+</script>
+</body>
+</html>
