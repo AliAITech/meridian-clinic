@@ -73,6 +73,7 @@
   .hero .rise.d1{animation-delay:.1s}.hero .rise.d2{animation-delay:.25s}.hero .rise.d3{animation-delay:.4s}.hero .rise.d4{animation-delay:.55s}
   .photo-wrap{overflow:hidden;border-radius:20px;box-shadow:0 12px 32px rgba(24,60,66,.16);animation:rise 1s ease .3s both}
   .hero .photo{width:100%;height:auto;display:block;animation:kenburns 22s ease-in-out infinite alternate}
+  .hero video.photo{animation:none}
   @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
   .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease, transform .8s ease}
   .js .reveal.in{opacity:1;transform:none}
@@ -127,7 +128,7 @@
       <div class="rise d3"><a class="btn" href="book.html">Book an appointment</a> <a class="btn light" href="#services">Our services</a></div>
       <p class="note-line rise d4">You don't have to go through it alone.</p>
     </div>
-    <div class="photo-wrap"><img class="photo" src="assets/hero-room.jpg" alt="A calm therapy room with two armchairs, plants and natural light"></div>
+    <div class="photo-wrap"><video class="photo" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/hero-room.jpg" aria-label="A calm therapy room with two armchairs, plants and natural light"><source src="assets/hero-motion.mp4" type="video/mp4"></video></div>
   </div>
 
   <div class="trust"><span>Licensed professionals</span><span>In-person &amp; online</span><span>English &amp; فارسی</span><span>MVA / FSRA support</span></div>
@@ -202,6 +203,11 @@
     });
   }, { threshold: 0.12 });
   els.forEach(function (el) { el.classList.add('reveal'); io.observe(el); });
+  // Respect reduced-motion for the hero video: hold the still poster.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var hv = document.getElementById('heroVideo');
+    if (hv) { hv.removeAttribute('autoplay'); hv.pause(); }
+  }
 })();
 </script>
 </body>
