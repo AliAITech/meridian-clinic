@@ -2,21 +2,23 @@
 <!--
   MERIDIAN CLINIC — BOOK PAGE — 2026-11-03 — DRAFT, NOT PUBLISHED
   Built to Meridian Clinic Brand Book v1.1-corrected (same palette/type
-  as index.html). How booking works in this static draft:
-  the form does NOT store anything and has no server. On submit it
-  composes an email to info@meridiangroup.health whose subject STARTS
-  WITH "Book" (Ali's rule, 2026-11-03, so colleagues spot booking mail
-  in the shared info@ inbox) and opens it in the visitor's email app.
-  Subject format: Book – <Service> – <Full name>
-  When the site is published, this can be upgraded to automatic
-  delivery (a form service pointed at info@) with the same subject.
+  as index.html). Booking delivery (changed 2026-11-03 at Ali's
+  instruction — the visitor's email app must NOT open):
+  the form POSTs directly to FormSubmit (formsubmit.co) addressed to
+  info@meridiangroup.health, so each request lands straight in the
+  Meridian shared inbox. Subject STARTS WITH "Book" (Ali's rule, so
+  colleagues spot booking mail): Book – <Service> – <Full name>
+  (set by the script below into the hidden _subject field).
+  ONE-TIME SETUP: FormSubmit emails an activation link to info@ on
+  the first submission — someone with info@ access clicks it once;
+  after that, delivery is automatic. Success page: thanks.html.
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Book an Appointment — Meridian Clinic</title>
-<meta name="description" content="Book an appointment at Meridian Clinic, Richmond Hill and online across Ontario. Your request is emailed to our team with the subject starting 'Book'.">
+<meta name="description" content="Book an appointment at Meridian Clinic, Richmond Hill and online across Ontario. Your request is sent directly to our team — no email app needed — with the subject starting 'Book'.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,20 +67,25 @@
 
 <main class="wrap">
   <h1>Book an appointment</h1>
-  <p class="intro">Tell us what you need and when suits you. When you press the button, your email app will open with your booking ready to send to our team at <strong>info@meridiangroup.health</strong> — its subject starts with <strong>Book</strong>, so we can find it right away. We reply to confirm your appointment.</p>
+  <p class="intro">Tell us what you need and when suits you, then press the button — your request is sent <strong>directly to our team</strong> at Meridian Clinic. No email app opens and nothing else is needed from you. We reply to confirm your appointment.</p>
 
-  <form id="bookForm" novalidate>
+  <form id="bookForm" action="https://formsubmit.co/info@meridiangroup.health" method="POST">
+    <input type="hidden" name="_subject" id="fSubject" value="Book – New Booking">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://aliaitech.github.io/meridian-clinic/thanks.html">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <div class="row">
       <div><label for="fName">Full name <span class="req">*</span></label>
-        <input id="fName" name="name" type="text" autocomplete="name" required></div>
+        <input id="fName" name="Name" type="text" autocomplete="name" required></div>
       <div><label for="fPhone">Phone <span class="req">*</span></label>
-        <input id="fPhone" name="phone" type="tel" autocomplete="tel" required></div>
+        <input id="fPhone" name="Phone" type="tel" autocomplete="tel" required></div>
     </div>
     <div class="row">
       <div><label for="fEmail">Email</label>
         <input id="fEmail" name="email" type="email" autocomplete="email"></div>
       <div><label for="fService">Service <span class="req">*</span></label>
-        <select id="fService" name="service" required>
+        <select id="fService" name="Service" required>
           <option value="">Please choose…</option>
           <option>Individual Therapy</option>
           <option>Couples Therapy</option>
@@ -93,36 +100,29 @@
     </div>
     <div class="row">
       <div><label for="fDate">Preferred date</label>
-        <input id="fDate" name="date" type="date"></div>
+        <input id="fDate" name="Preferred_Date" type="date"></div>
       <div><label for="fTime">Preferred time</label>
-        <select id="fTime" name="time">
+        <select id="fTime" name="Preferred_Time">
           <option value="">No preference</option>
           <option>Morning</option><option>Afternoon</option><option>Evening</option>
         </select></div>
     </div>
     <div class="row">
       <div><label for="fType">Session type</label>
-        <select id="fType" name="type">
+        <select id="fType" name="Session_Type">
           <option>In-person</option><option>Online</option><option>Either</option>
         </select></div>
       <div><label for="fLang">Language</label>
-        <select id="fLang" name="language">
+        <select id="fLang" name="Language">
           <option>English</option><option>فارسی (Persian)</option><option>Either</option>
         </select></div>
     </div>
     <label for="fNotes">Anything we should know?</label>
-    <textarea id="fNotes" name="notes" placeholder="A few words are enough — please do not include sensitive health details here."></textarea>
+    <textarea id="fNotes" name="Notes" placeholder="A few words are enough — please do not include sensitive health details here."></textarea>
 
     <button class="btn" type="submit">Send booking request</button>
-    <p class="note">Your request goes to <strong>info@meridiangroup.health</strong> with the subject starting <strong>“Book – …”</strong>. Prefer to talk? Call us at <a href="tel:+19056506800">905-650-6800</a>.</p>
+    <p class="note">Your request is delivered straight to our clinic inbox (<strong>info@meridiangroup.health</strong>) with the subject starting <strong>“Book – …”</strong>, so our team can spot it right away. Prefer to talk? Call us at <a href="tel:+19056506800">905-650-6800</a>.</p>
     <div class="err" id="errBox">Please fill in your name, phone, and the service you need.</div>
-    <div class="done" id="doneBox">
-      <strong>Almost done — please press Send in your email app.</strong><br>
-      Your booking email is addressed to info@meridiangroup.health and its subject is
-      <strong id="doneSubject"></strong>. If your email app did not open,
-      <a id="doneLink" href="#">tap here to open it</a>, or email us directly at
-      <a href="mailto:info@meridiangroup.health">info@meridiangroup.health</a> with “Book” in the subject.
-    </div>
   </form>
 </main>
 
@@ -132,34 +132,15 @@
 </div></footer>
 
 <script>
+// Validate, then set the inbox subject ("Book – <Service> – <Name>") and
+// let the form POST straight to the clinic inbox via FormSubmit.
 document.getElementById('bookForm').addEventListener('submit', function (e) {
-  e.preventDefault();
   var v = function (id) { return document.getElementById(id).value.trim(); };
   var name = v('fName'), phone = v('fPhone'), service = v('fService');
   var err = document.getElementById('errBox');
-  if (!name || !phone || !service) { err.style.display = 'block'; return; }
+  if (!name || !phone || !service) { e.preventDefault(); err.style.display = 'block'; return; }
   err.style.display = 'none';
-  var subject = 'Book – ' + service + ' – ' + name;
-  var lines = [
-    'New booking request from the Meridian Clinic website',
-    '',
-    'Name: ' + name,
-    'Phone: ' + phone,
-    'Email: ' + (v('fEmail') || '—'),
-    'Service: ' + service,
-    'Preferred date: ' + (v('fDate') || '—'),
-    'Preferred time: ' + (v('fTime') || 'No preference'),
-    'Session type: ' + v('fType'),
-    'Language: ' + v('fLang'),
-    'Notes: ' + (v('fNotes') || '—')
-  ];
-  var mailto = 'mailto:info@meridiangroup.health'
-    + '?subject=' + encodeURIComponent(subject)
-    + '&body=' + encodeURIComponent(lines.join('\n'));
-  document.getElementById('doneSubject').textContent = '“' + subject + '”';
-  document.getElementById('doneLink').href = mailto;
-  document.getElementById('doneBox').style.display = 'block';
-  window.location.href = mailto;
+  document.getElementById('fSubject').value = 'Book – ' + service + ' – ' + name;
 });
 </script>
 </body>
